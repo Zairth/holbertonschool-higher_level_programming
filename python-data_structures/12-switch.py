@@ -2,6 +2,4 @@
 a = 89
 b = 10
 a, b = b, a
-print(type(a))
-print(type(b))
 print("a={:d} - b={:d}".format(a, b))

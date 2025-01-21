@@ -7,7 +7,7 @@ def best_score(a_dictionary):
         max_integer = list(a_dictionary.values())[0]
 
         for cle, valeur in a_dictionary.items():
-            if a_dictionary[cle] > max_integer:
+            if valeur > max_integer:
                 max_integer = valeur
                 best_value = cle
 

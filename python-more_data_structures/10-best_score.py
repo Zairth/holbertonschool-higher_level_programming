@@ -4,7 +4,7 @@ def best_score(a_dictionary):
 
     if a_dictionary is not None:
 
-        max_integer = 0
+        max_integer = -1000000000000
 
         for cle, valeur in a_dictionary.items():
             if valeur > max_integer:

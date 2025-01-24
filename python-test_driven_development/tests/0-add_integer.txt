@@ -32,3 +32,8 @@ NameError: name 'nan' is not defined
 Traceback (most recent call last):
 ...
 TypeError: add_integer() missing 1 required positional argument: 'a'
+
+>>> add_integer(int('NaN'))
+Traceback (most recent call last):
+...
+ValueError: invalid literal for int() with base 10: 'NaN'

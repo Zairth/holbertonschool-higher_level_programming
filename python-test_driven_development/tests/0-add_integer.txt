@@ -13,7 +13,22 @@ Traceback (most recent call last):
 ...
 TypeError: a must be an integer
 
->>> add_integer(int(""))
+>>> add_integer(None)
 Traceback (most recent call last):
 ...
-ValueError: invalid literal for int() with base 10: ''
+TypeError: a must be an integer
+
+>>> add_integer(float('inf'))
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+
+>>> add_integer(nan)
+Traceback (most recent call last):
+...
+NameError: name 'nan' is not defined
+
+>>> add_integer()
+Traceback (most recent call last):
+...
+TypeError: add_integer() missing 1 required positional argument: 'a'

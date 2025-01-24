@@ -2,15 +2,14 @@
 def best_score(a_dictionary):
     best_value = ""
 
-    if a_dictionary is not None:
+    if not a_dictionary:
+        return
 
-        max_integer = 0
+    max_integer = 0
 
-        for cle, valeur in a_dictionary.items():
-            if valeur > max_integer:
-                max_integer = valeur
-                best_value = cle
+    for cle, valeur in a_dictionary.items():
+        if valeur > max_integer:
+            max_integer = valeur
+            best_value = cle
 
-        return best_value
-
-    return None
+    return best_value

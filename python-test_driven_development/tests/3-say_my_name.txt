@@ -1,5 +1,5 @@
 ======================
-Tests for dividing a matrix
+Tests for printing names
 ======================
 
 >>> import importlib

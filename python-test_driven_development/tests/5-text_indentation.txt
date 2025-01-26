@@ -20,6 +20,6 @@ Traceback (most recent call last):
 ...
 TypeError: text_indentation() takes 1 positional argument but 2 were given
 
->>> text_indentation("Holberton.School")
+>>> text_indentation("Holberton. School? How are you: John")
 Traceback (most recent call last):
 ...

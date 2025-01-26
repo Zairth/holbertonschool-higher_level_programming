@@ -24,7 +24,7 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    forbidden_char = ['.', '?', ':']
+    forbidden_char = ['.', ':', '?']
     forbidden_char_found = False
 
     for i in range(len(text)):
@@ -39,3 +39,5 @@ def text_indentation(text):
         print("{}".format(text[i]), end="")
         if forbidden_char_found:
             print("\n")
+
+text_indentation("Holberton. School? How are you: John")

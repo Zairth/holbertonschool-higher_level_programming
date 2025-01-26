@@ -1,0 +1,21 @@
+======================
+Tests for dividing a matrix
+======================
+
+>>> import importlib
+>>> say_my_name = importlib.import_module('3-say_my_name').say_my_name
+
+>>> say_my_name(3, "Smith")
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+>>> say_my_name()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+>>> say_my_name("Smith", None)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string

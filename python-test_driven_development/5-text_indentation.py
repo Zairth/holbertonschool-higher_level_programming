@@ -25,12 +25,12 @@ def text_indentation(text):
         raise TypeError("text must be a string")
 
     forbidden_char = ['.', '?', ':']
-    forbidden_char_found = False
 
     for i in range(len(text)):
         if forbidden_char_found and text[i] == " ":
             forbidden_char_found = False
             continue
+        forbidden_char_found = False
         for j in range(len(forbidden_char)):
             if text[i] == forbidden_char[j]:
                 forbidden_char_found = True

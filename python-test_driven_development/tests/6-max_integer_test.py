@@ -46,6 +46,10 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([99999999, 100000000, 100000001]),
                          100000001)
 
+    def test_max_at_the_beginning(self):
+        """Test with the max at the beginning"""
+        self.assertEqual(max_integer([5, 2, 3, 4]), 4)
+
 
 if __name__ == '__main__':
     unittest.main()

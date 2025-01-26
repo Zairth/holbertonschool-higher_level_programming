@@ -28,13 +28,13 @@ def text_indentation(text):
     forbidden_char_found = False
 
     for i in range(len(text)):
-        if forbidden_char_found:
+        if forbidden_char_found and text[i] == " ":
             forbidden_char_found = False
-            if text[i + 1] == " ":
-                continue
-        print("{}".format(text[i]), end="")
+            continue
         for j in range(len(forbidden_char)):
             if text[i] == forbidden_char[j]:
-                print("\n")
                 forbidden_char_found = True
                 break
+        print("{}".format(text[i]), end="")
+        if forbidden_char_found:
+            print("\n")

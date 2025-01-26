@@ -30,7 +30,8 @@ def text_indentation(text):
     for i in range(len(text)):
         if forbidden_char_found:
             forbidden_char_found = False
-            continue
+            if text[i + 1] == " ":
+                continue
         print("{}".format(text[i]), end="")
         for j in range(len(forbidden_char)):
             if text[i] == forbidden_char[j]:

@@ -28,9 +28,10 @@ def text_indentation(text):
     forbidden_char_found = False
 
     for i in range(len(text)):
-        if forbidden_char_found and text[i] == " ":
+        if forbidden_char_found:
             forbidden_char_found = False
-            continue
+            if text[i] == " ":
+                continue
         for j in range(len(forbidden_char)):
             if text[i] == forbidden_char[j]:
                 forbidden_char_found = True

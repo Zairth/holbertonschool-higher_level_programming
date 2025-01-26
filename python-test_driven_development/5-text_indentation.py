@@ -39,5 +39,3 @@ def text_indentation(text):
         print("{}".format(text[i]), end="")
         if forbidden_char_found:
             print("\n")
-
-text_indentation("Holberton. School? How are you: John")

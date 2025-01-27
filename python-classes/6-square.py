@@ -10,6 +10,7 @@ class Square:
 
     Attributes:
         size (int): instance attribute size of the square
+        position (tuple of int): the position of the square
     """
 
     def __init__(self, size=0, position=(0, 0)):
@@ -18,6 +19,7 @@ class Square:
 
         Args:
             size: The size of the square
+            position: The position of the square
         """
 
         self.size = size
@@ -47,17 +49,17 @@ class Square:
     @property
     def position(self):
         """
-        Getter to gain acces of __size
+        Getter to gain acces of __position
 
         Returns:
-            The size of the square
+            The position of the square
         """
 
         return self.__position
 
     @position.setter
     def position(self, __position):
-        """Setter to modificate __size with verification"""
+        """Setter to modificate __position with verification"""
 
         for tuple in __position:
             if not isinstance(tuple, int):

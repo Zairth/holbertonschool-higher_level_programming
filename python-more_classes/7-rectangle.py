@@ -114,7 +114,7 @@ class Rectangle:
                 if isinstance(self.print_symbol, list):
                     rect_print += repr(self.print_symbol)
                 else:
-                    rect_print += self.print_symbol
+                    rect_print += str(self.print_symbol)
             if i < self.height - 1:
                 rect_print += "\n"
         return rect_print

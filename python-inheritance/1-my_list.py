@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-Class to print a sorted list
+"""1-my_list.py
 """
 
 

@@ -2,6 +2,9 @@
 The ``1-my_list`` module
 ======================
 
+Using ``MyList``
+---------------------
+
 >>> import importlib
 >>> MyList = importlib.import_module('1-my_list').MyList
 

@@ -4,7 +4,7 @@
 
 
 def is_same_class(obj, a_class):
-    """Print a list in ascending order"""
+    """Verify if it is exactly the same type as specified"""
 
     if type(obj) is a_class:
         return True

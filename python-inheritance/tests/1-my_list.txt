@@ -8,42 +8,59 @@ Using ``MyList``
 >>> MyList = __import__('1-my_list').MyList
 >>> print_sorted = MyList.print_sorted
 
-#test A normal int test
-    >>> print_sorted([2, 4, 3, 5])
-    [2, 3, 4, 5]
+#test creation my_list
+>>> my_list = MyList()
+>>> isinstance(my_list, list)
+True
 
-#test A None test
-    >>> print_sorted(None)
-    Traceback (most recent call last):
-    ...
-    TypeError: 'NoneType' object is not iterable
+#test creation my_list
+>>> my_list = MyList()
+>>> isinstance(my_list, MyList)
+True
 
-#test A test with a tuple
-    >>> print_sorted((1, 5, 3))
-    [1, 3, 5]
+#test non int
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append("string")
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+...
+TypeError: '<' not supported between instances of 'str' and 'int'
 
-#test A test with a list of 2 strings
-    >>> print_sorted(["Hello", "Bonjour"])
-    ['Bonjour', 'Hello']
+#test with None
+>>> my_list = None
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+...
+AttributeError: 'NoneType' object has no attribute 'print_sorted'
 
-#test A test with 2 arguments
-    >>> print_sorted("Hello", "Bonjour")
-    Traceback (most recent call last):
-    ...
-    TypeError: MyList.print_sorted() takes 1 positional argument but 2 were given
+#test with "normal" parameters
+>>> print_sorted([2,8,3])
+[2, 3, 8]
 
-#test A test with no argument
-    >>> print_sorted()
-    Traceback (most recent call last):
-    ...
-    TypeError: MyList.print_sorted() missing 1 required positional argument: 'self'
+#test with parameters being negative
+>>> print_sorted([2,8,-3])
+[-3, 2, 8]
 
-#test A test with a list of int casted into str
-    >>> print_sorted(str[1, 3, 2])
-    Traceback (most recent call last):
-    ...
-    TypeError: type 'str' is not subscriptable
+#test with only one parameter
+>>> print_sorted([2])
+[2]
 
-#test A test with repeated numbers
-    >>> print_sorted([1, 3, 2, 4, 3])
-    [1, 2, 3, 3, 4]
+#test with emty list
+>>> print_sorted([])
+[]
+
+#test documentation module
+>>> documen = __import__('1-my_list').__doc__
+>>> len(documen) > 1
+True
+
+#test documentation class
+>>> documen = MyList.__doc__
+>>> len(documen) > 1
+True
+
+#test documentation methode
+>>> documen = MyList.print_sorted.__doc__
+>>> len(documen) > 1
+True

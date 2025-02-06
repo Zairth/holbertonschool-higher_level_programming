@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""7-base_geometry.py
+"""8-rectangle.py
 """
 
 
@@ -26,6 +26,10 @@ class BaseGeometry():
 class Rectangle(BaseGeometry):
     """
     Create a new instance inherited from BaseGeometry
+
+    Attributes:
+        width (int): width of the rectangle
+        height (int): the height of the rectangle
     """
 
     def __init__(self, width, height):

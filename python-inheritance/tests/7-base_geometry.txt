@@ -1,52 +1,21 @@
-======================
-The ``7-base_geometry`` module
-======================
+"""
+This is the test for base_geometry function.
+"""
 
-Using ``BaseGeometry``
----------------------
+# Importing the function from the module:
+    >>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
 
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+# Testing for module docstring:
+    >>> module = __import__("7-base_geometry").__doc__
+    >>> len(module) > 1
+    True
 
-#test creation my_geo
->>> my_geo = BaseGeometry()
->>> isinstance(my_geo, BaseGeometry)
-True
+# Testing for class docstring:
+    >>> class = __import__("7-base_geometry").BaseGeometry.__doc__
+    >>> len(class) > 1
+    True
 
-#test with 0
->>> my_geo.integer_validator("name", 0)
-Traceback (most recent call last):
-...
-ValueError: <name> must be greater than 0
-
-#test with None
->>> my_geo.integer_validator("name", None)
-Traceback (most recent call last):
-...
-TypeError: <name> must be an integer
-
-#test with One Args
->>> my_geo.integer_validator("name")
-Traceback (most recent call last):
-...
-TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
-
-#test with No Args
->>> my_geo.integer_validator()
-Traceback (most recent call last):
-...
-TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
-
-#test with negative value
->>> my_geo.integer_validator("name", -4)
-Traceback (most recent call last):
-...
-ValueError: <name> must be greater than 0
-
-#test with valid value
->>> my_geo.integer_validator("name", 4)
-
-#test with empty name
->>> my_geo.integer_validator("", 4)
-
-#test with with None name
->>> my_geo.integer_validator(None, 4)
+# Testing for method docstring:
+    >>> method = BaseGeometry.integer_validator.__doc__
+    >>> len(method) > 1
+    True

@@ -53,3 +53,10 @@ class Rectangle(Shape):
         """Abstract method that implemente the parent method"""
 
         return self.height * self.width
+
+
+def shape_info(instance):
+    """Function that print area and perimeter of instance class"""
+
+    print("Area: {}".format(instance.area()))
+    print("Perimeter: {}".format(instance.perimeter()))

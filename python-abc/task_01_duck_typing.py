@@ -47,12 +47,12 @@ class Rectangle(Shape):
     def area(self):
         """Abstract method that implemente the parent method"""
 
-        return 2 * (self.height + self.width)
+        return self.height * self.width
 
     def perimeter(self):
         """Abstract method that implemente the parent method"""
 
-        return self.height * self.width
+        return 2 * (self.height + self.width)
 
 
 def shape_info(instance):

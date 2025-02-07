@@ -29,11 +29,7 @@ class Rectangle(BaseGeometry):
 
         return self.__height * self.__width
 
-    def __print__(self):
-        """Print a personnalized message"""
-
-        print("[Rectangle] {}/{}".format(self.__width, self.__height))
-
     def __str__(self):
         """Return a personnalized message"""
+
         return f"[Rectangle] {self.__width}/{self.__height}"

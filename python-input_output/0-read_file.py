@@ -2,7 +2,7 @@
 
 
 def read_file(filename=""):
-    """Open, Read, And write a file in the stdout"""
+    """Open, read and print the contents of a file to stdout"""
 
     with open(filename, "r", encoding="utf-8") as file:
-        print("{}".format(file.read()), end="")
+        print(file.read(), end="")

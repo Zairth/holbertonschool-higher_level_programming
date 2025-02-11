@@ -24,4 +24,4 @@ def convert_csv_to_json(filename):
     except Exception as e:
         print("Error during the conversion: {}".format(e))
 
-        return None
+        return False

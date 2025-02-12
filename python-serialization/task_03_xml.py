@@ -8,7 +8,20 @@ def serialize_to_xml(dictionary, filename):
     serialize the dictionary into XML and save it to the given filename
     """
 
-    pass
+    root = ET.Element('data')
+
+    for key, value in dictionary.items():
+        child = ET.SubElement(root, key)
+        child.text = value
+
+    tree = ET.ElementTree(root)
+
+    try:
+        tree.write(filename)
+
+    except Exception as e:
+        print("Error during serialization: {}".format(e))
+        return None
 
 
 def deserialize_from_xml(filename):
@@ -17,24 +30,16 @@ def deserialize_from_xml(filename):
     and return a deserialized Python dictionary.
     """
 
-    pass
+    try:
+        tree = ET.parse(filename)
+        root = tree.getroot()
 
+        dictionnary = {}
 
-def main():
-    sample_dict = {
-        'name': 'John',
-        'age': '28',
-        'city': 'New York'
-    }
+        for child in root:
+            dictionnary[child.tag] = child.text
 
-    xml_file = "data.xml"
-    serialize_to_xml(sample_dict, xml_file)
-    print(f"Dictionary serialized to {xml_file}")
+        return dictionnary
 
-    deserialized_data = deserialize_from_xml(xml_file)
-    print("\nDeserialized Data:")
-    print(deserialized_data)
-
-
-if __name__ == "__main__":
-    main()
+    except Exception as e:
+        print("Error during deserialization: {}".format(e))

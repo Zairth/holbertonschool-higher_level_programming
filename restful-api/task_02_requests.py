@@ -29,16 +29,13 @@ def fetch_and_save_posts():
 
         posts = response.json()
 
-        post_data = list()
-
-        for post in posts:
-            post_data.append
-            ({"id": post["id"], "title": post["title"], "body": post["body"]})
-
         with open('posts.csv', mode='w', newline='', encoding='utf-8') as file:
             writer = csv.DictWriter(file, fieldnames=["id", "title", "body"])
+
             writer.writeheader()
-            writer.writerows(post_data)
+
+            for post in posts:
+                writer.writerows({"id": post["id"], "title": post["title"], "body": post["body"]})
     else:
         print("Failed to fetch posts. Status code: {}".format(response.status_code))
 

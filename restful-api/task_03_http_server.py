@@ -26,8 +26,7 @@ class Simple_API(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
             if self.path == '/':
-                self.wfile.write("Hello, this is a simple API!"
-                                 .encode('utf-8'))
+                self.wfile.write(b"Hello, this is a simple API!")
             else:
                 self.wfile.write("OK".encode('utf-8'))
 
@@ -40,7 +39,10 @@ class Simple_API(BaseHTTPRequestHandler):
                                 "A simple API built with http.server"})
 
         else:
-            self._set_response({"error": "Not found"}, 404)
+            self.send_response(404)
+            self.send_header('Content-type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(b"Endpoint not found")
 
 
 def run():

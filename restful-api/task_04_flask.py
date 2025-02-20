@@ -34,7 +34,7 @@ def get_user(username):
     """Get a specific user"""
 
     if username not in users_dict:
-        return jsonify({"Error": "User not found"})
+        return jsonify({"error": "User not found"})
 
     return jsonify(users_dict[username])
 

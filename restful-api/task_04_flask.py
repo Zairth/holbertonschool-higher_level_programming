@@ -34,9 +34,9 @@ def get_user(username):
     """Get a specific user"""
 
     if username not in users_dict:
-        return jsonify({"error": "User not found"})
+        return jsonify({"error": "User not found"}), 404
 
-    return jsonify(users_dict[username])
+    return jsonify(users_dict[username]), 200
 
 
 @app.route('/add_user', methods=["POST"])

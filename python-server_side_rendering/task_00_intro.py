@@ -49,7 +49,7 @@ def generate_invitations(template, attendees):
                 raise FileExistsError(
                     f"File {output_filename} already exists.")
 
-            with open(f"output_{i}.txt", "w") as invitation:
+            with open(f"output_{i}.txt", "w", encoding="utf-8") as invitation:
                 invitation.write(personalized_invitation)
 
         except FileExistsError as e:

@@ -11,18 +11,18 @@ def generate_invitations(template, attendees):
     Generate invitation from a template with attendees attributes
     """
 
-    if not isinstance(template, str):
+    if not isinstance(template, str) or template is None:
         print(f"Invalid input: template must\
         be a string, but got {type(template).__name__}.")
         return
 
-    if len(template) == 0:
-        print("Template is empty, no output files generated.")
-        return
-
-    if not isinstance(attendees, list):
+    if not isinstance(attendees, list) or attendees is None:
         print(f"Invalid input: \
         attendees must be a list, but got {type(attendees)}.")
+        return
+
+    if not template:
+        print("Template is empty, no output files generated.")
         return
 
     if not attendees:

@@ -29,9 +29,9 @@ def generate_invitations(template, attendees):
             raise TypeError(f"Invalid input: \
             each attendee must be a dictionary, but got {type(a).__name__}.")
 
-    for key, value in a.items():
-        if value is None or len(value.strip()) == 0:
-            a[key] = "N/A"
+        for key, value in a.items():
+            if value is None or len(value.strip()) == 0:
+                a[key] = "N/A"
 
     for i, attendee in enumerate(attendees, start=1):
         try:

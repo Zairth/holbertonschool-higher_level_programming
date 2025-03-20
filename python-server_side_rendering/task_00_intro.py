@@ -37,10 +37,10 @@ def generate_invitations(template, attendees):
         try:
 
             personalized_invitation = template\
-                .replace("{name}", attendee["name"]) \
-                .replace("{event_title}", attendee["event_title"]) \
-                .replace("{event_date}", attendee["event_date"]) \
-                .replace("{event_location}", attendee["event_location"])
+                .replace("{name}", attendee['name']) \
+                .replace("{event_title}", attendee['event_title']) \
+                .replace("{event_date}", attendee['event_date']) \
+                .replace("{event_location}", attendee['event_location'])
 
             output_filename = f"output_{i}.txt"
 

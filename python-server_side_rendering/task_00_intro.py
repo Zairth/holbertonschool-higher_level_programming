@@ -12,13 +12,11 @@ def generate_invitations(template, attendees):
     """
 
     if not isinstance(template, str) or template is None:
-        print(f"Invalid input: template must\
-        be a string, but got {type(template).__name__}.")
+        print(f"Invalid input: template must be a string, but got {type(template).__name__}.")
         return
 
     if not isinstance(attendees, list) or attendees is None:
-        print(f"Invalid input: \
-        attendees must be a list, but got {type(attendees)}.")
+        print(f"Invalid input: attendees must be a list, but got {type(attendees)}.")
         return
 
     if not template:
@@ -31,8 +29,7 @@ def generate_invitations(template, attendees):
 
     for a in attendees:
         if not isinstance(a, dict):
-            print(f"Invalid input: \
-            each attendee must be a dictionary, but got {type(a).__name__}.")
+            print(f"Invalid input: each attendee must be a dictionary, but got {type(a).__name__}.")
             return
 
         for key, value in a.items():
@@ -41,12 +38,16 @@ def generate_invitations(template, attendees):
 
     for i, attendee in enumerate(attendees, start=1):
         try:
+            attendee_name = attendee.get("name") or "N/A"
+            attendee_title = attendee.get("event_title") or "N/A"
+            attendee_date = attendee.get("event_date") or "N/A"
+            attendee_location = attendee.get("event_location") or "N/A"
 
             personalized_invitation = template\
-                .replace("{name}", attendee['name']) \
-                .replace("{event_title}", attendee['event_title']) \
-                .replace("{event_date}", attendee['event_date']) \
-                .replace("{event_location}", attendee['event_location'])
+                .replace("{name}", attendee_name) \
+                .replace("{event_title}", attendee_title) \
+                .replace("{event_date}", attendee_date) \
+                .replace("{event_location}", attendee_location)
 
             output_filename = f"output_{i}.txt"
 

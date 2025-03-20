@@ -12,23 +12,28 @@ def generate_invitations(template, attendees):
     """
 
     if not isinstance(template, str):
-        raise TypeError(f"Invalid input: template must\
+        print(f"Invalid input: template must\
         be a string, but got {type(template).__name__}.")
+        return
 
     if len(template) == 0:
-        raise ValueError("Template is empty, no output files generated.")
+        print("Template is empty, no output files generated.")
+        return
 
     if not isinstance(attendees, list):
-        raise TypeError(f"Invalid input: \
+        print(f"Invalid input: \
         attendees must be a list, but got {type(attendees)}.")
+        return
 
     if not attendees:
-        raise ValueError("No data provided, no output files generated.")
+        print("No data provided, no output files generated.")
+        return
 
     for a in attendees:
         if not isinstance(a, dict):
-            raise TypeError(f"Invalid input: \
+            print(f"Invalid input: \
             each attendee must be a dictionary, but got {type(a).__name__}.")
+            return
 
         for key, value in a.items():
             if value is None or len(value.strip()) == 0:
@@ -46,14 +51,12 @@ def generate_invitations(template, attendees):
             output_filename = f"output_{i}.txt"
 
             if os.path.exists(output_filename):
-                raise FileExistsError(
-                    f"File {output_filename} already exists.")
+                print(f"File {output_filename} already exists.")
+                continue
 
             with open(f"output_{i}.txt", "w", encoding="utf-8") as invitation:
                 invitation.write(personalized_invitation)
 
-        except FileExistsError as e:
-            return f"Error: {str(e)}"
-
         except Exception as e:
-            return f"An error occured: {str(e)}"
+            print(f"An error occured: {str(e)}")
+            return

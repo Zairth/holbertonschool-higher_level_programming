@@ -53,7 +53,7 @@ def generate_invitations(template, attendees):
                 invitation.write(personalized_invitation)
 
         except FileExistsError as e:
-            return f"Error: {e}"
+            return f"Error: {str(e)}"
 
         except Exception as e:
-            return f"An error occured: {e}"
+            return f"An error occured: {str(e)}"

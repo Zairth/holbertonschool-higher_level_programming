@@ -113,10 +113,6 @@ def products():
         except Exception as e:
             return render_template('product_display.html', error_msg=str(e))
 
-        finally:
-            connexion.close()
-            return render_template('product_display.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

@@ -9,7 +9,7 @@
     <p>Displaying data from JSON or CSV Format.</p>
     {% if error_msg %}
         <p>{{ error_msg }}</p>
-    {% elif datas %}
+    {% else %}
         <table>
             <tr>
                 <th>Name</th>

@@ -24,8 +24,8 @@ def items():
 
     return render_template('items.html', items=items)
 
-@app.route('/product_display')
-def product_display():
+@app.route('/products')
+def products():
     error_msg = ""
 
     source = request.args.get("source", None)

@@ -93,8 +93,10 @@ def products():
 
                 for data in datas:
                     if data['id'] == int(target_id):
+                        connexion.close()
                         return render_template('product_display.html', datas=[data])
 
+                connexion.close()
                 return render_template('product_display.html', error_msg="Product not found")
 
             cursor.execute("SELECT * FROM Products")
@@ -108,9 +110,11 @@ def products():
                     "price": data_tr[3]
                 })
 
+            connexion.close()
             return render_template('product_display.html', datas=datas)
 
         except Exception as e:
+            connexion.close()
             return render_template('product_display.html', error_msg=str(e))
 
 

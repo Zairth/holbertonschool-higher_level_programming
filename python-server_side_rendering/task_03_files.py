@@ -32,8 +32,7 @@ def product_display():
     target_id = request.args.get("id", None)
 
     if source is None or source != "json" and source != "csv":
-        error_msg = "Wrong source"
-        return render_template('product_display.html', error_msg=error_msg)
+        return render_template('product_display.html', error_msg="Wrong source")
 
     if source == "json":
         try:
@@ -43,33 +42,32 @@ def product_display():
             if target_id is not None:
                 for data in datas:
                     if data['id'] == int(target_id):
-                        return render_template('product_display.html', data=data)
-                error_msg = "Product not found"
-                return render_template('product_display.html', error_msg=error_msg)
+                        return render_template('product_display.html', datas=[data])
+                return render_template('product_display.html', error_msg="Product not found")
 
             return render_template('product_display.html', datas=datas)
 
         except Exception as e:
-            exception = True
-            return render_template('product_display.html', error_msg=str(e), exception=exception)
+            return render_template('product_display.html', error_msg=str(e))
 
     elif source == "csv":
         try:
-            file = open("products.csv", "r")
-            datas = csv.DictReader(file)
+            datas = []
+            with open("products.csv", "r") as file:
+                csv_datas = csv.DictReader(file)
+                for row in csv_datas:
+                    datas.append(row)
 
             if target_id is not None:
                 for data in datas:
-                    if data['id'] == int(target_id):
-                        return render_template('product_display.html', data=data, file=file)
-                error_msg = "Product not found"
-                return render_template('product_display.html', error_msg=error_msg, file=file)
+                    if data[' id'] == f" {target_id}":
+                        return render_template('product_display.html', datas=[data])
+                return render_template('product_display.html', error_msg="Product not found")
 
             return render_template('product_display.html', datas=datas, file=file)
 
         except Exception as e:
-            exception = True
-            return render_template('product_display.html', error_msg=str(e), exception=exception, file=file)
+            return render_template('product_display.html', error_msg=str(e))
 
 
 if __name__ == '__main__':

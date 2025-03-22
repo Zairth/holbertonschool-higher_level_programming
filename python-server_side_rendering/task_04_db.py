@@ -79,7 +79,7 @@ def products():
 
             if target_id is not None:
                 print("Bonjour 1")
-                cursor.execute("SELECT * FROM Products WHERE id = ?", (target_id))
+                cursor.execute("SELECT * FROM Products WHERE id = ?", (target_id,))
                 sql_datas = cursor.fetchall()
                 print("Bonjour 2")
 

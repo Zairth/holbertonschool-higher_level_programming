@@ -56,6 +56,7 @@ def products():
             with open("products.csv", "r") as file:
                 csv_datas = csv.DictReader(file)
                 for row in csv_datas:
+                    # row = {key.strip(): value.strip() for key, value in row.items()}  # 🔥 Nettoie les espaces
                     datas.append(row)
 
             if target_id is not None:

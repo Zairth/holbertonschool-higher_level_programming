@@ -3,7 +3,6 @@ let element = document.getElementById("list_movies");
 async function fetches() {
     let response = await fetch("https://swapi-api.hbtn.io/api/films/?format=json");
     let data = await response.json();
-    console.log(data.results);
     for (index of data.results) {
         element.innerHTML += `<li>${index.title}</li>`;
     }

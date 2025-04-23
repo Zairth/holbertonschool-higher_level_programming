@@ -1,0 +1,21 @@
+body {
+    padding: 20px;
+    font-size: 1.4rem;
+    text-align: center;
+    justify-items: center;
+}
+
+body > * {
+    max-width: 730px;
+} h1, h2, #introduction {
+    text-decoration: underline;
+} strong {
+    font-size: 1.6rem;
+} #example {
+    display: inline-block;
+    text-align: left;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 1.6rem;
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task 29 - Blog Post</title>
+  </head>
+  <body>
+    <header>
+      <h1>Python3: Mutable, Immutable... everything is object!</h1>
+      <p>
+        <strong id="introduction">Introduction:</strong><br /><br />
+        In Python programming, understanding how objects are managed and how
+        different data types are treated is crucial for writing efficient and
+        reliable code. A fundamental distinction exists between mutable and
+        immutable objects, which not only affects memory management but also the
+        behavior of programs when manipulating data. In this post, we'll explore
+        how Python handles these object types, focusing on concepts like memory
+        references (ID) and object type. We'll also delve into why this
+        distinction matters, especially when passing arguments to functions, and
+        how it impacts the behavior of your code.
+      </p>
+    </header>
+    <hr />
+    <article>
+      <header>
+        <h2>ID and Type</h2>
+      </header>
+      <p>
+        In Python, every object has two key properties: its type and its ID. The
+        type of an object refers to its data type (such as int, str, list,
+        etc.), which determines what kind of operations can be performed on that
+        object. You can check the type of an object using the built-in type()
+        function, which returns the class of the object, giving you an
+        indication of its type. On the other hand, the ID of an object is a
+        unique identifier that represents the memory address where the object is
+        stored. You can obtain this ID using the built-in id() function. The ID
+        remains constant for the lifetime of the object, meaning that if two
+        variables point to the same object in memory, they will have the same
+        ID. <br /><br />
+        In Python, certain objects are stored in the same memory location to
+        optimize memory usage. This is particularly true for small immutable
+        objects such as integers, strings, and even empty tuples. For example,
+        integers in the range from -5 to 256 and certain strings are often
+        stored in a shared memory pool, meaning multiple variables referencing
+        the same value will point to the same memory location. Similarly, an
+        empty tuple () will always have the same ID, no matter how many times
+        it's referenced in the code. This behavior helps reduce memory usage and
+        improve performance by reusing objects instead of creating new ones for
+        every reference. This is known as interning and is specific to certain
+        immutable types.
+      </p>
+    </article>
+    <hr />
+    <article>
+      <header>
+        <h2>Mutable Objects</h2>
+      </header>
+      <p>
+        In Python, mutable objects are those whose content can be changed after
+        they are created. This is in contrast to immutable objects, whose
+        content cannot be altered once they are created. Lists, dictionaries,
+        and sets are common examples of mutable objects in Python. Unlike
+        immutable objects, mutable objects can be modified in place, which means
+        their memory reference (ID) doesn't change when their contents are
+        updated.
+        <br /><br />
+        A key property of mutable objects is that they can be modified directly
+        without creating a new object in memory. For example, in one of our
+        exercises, we worked with a list, where we used the += operator to
+        append new values to the list. This operation modified the list in
+        place, meaning that the list's ID didn't change, even though its
+        contents were updated. This is in contrast to using the + operator,
+        which creates a new list in memory, causing a change in the list's ID.
+        Understanding this difference is crucial when working with mutable
+        objects, as it can affect how variables interact with each other in your
+        code.
+        <br /><br />
+        <strong>For example, let's consider the following: </strong><br /><br />
+        <span id="example">
+          a = [1, 2, 3] <br />
+          <br />
+          # Let's store the ID of the list a <br />
+          id_a = id(a) <br /><br />
+          # Modifying the list in place <br />
+          a += [4] <br /><br />
+          # True, because the list was modified in place <br />
+          print(id(a) == id_a)
+        </span>
+        <br /><br />
+        In this case, the ID of a remains the same, demonstrating that it was
+        modified in place. On the other hand, using a = a + [4] would create a
+        new list object, and thus the ID of a would change.
+        <br /><br />
+        Mutable objects are essential when you need to work with data that needs
+        to change frequently. However, their behavior can sometimes lead to
+        unexpected outcomes, especially when passed as arguments to functions.
+        This is why understanding how Python handles memory and object
+        references is so important when dealing with mutable objects.
+      </p>
+    </article>
+    <hr />
+    <article>
+      <header>
+        <h2>Immutable Objects</h2>
+      </header>
+      <p>
+        In Python, immutable objects are those whose content cannot be modified
+        after they are created. This means that once an immutable object is
+        instantiated, its state remains constant throughout its lifetime. Common
+        examples of immutable objects in Python include integers, strings, and
+        tuples. These objects cannot be altered directly, and any operation that
+        seems to modify them will instead create a new object with the updated
+        value, leaving the original object unchanged.
+        <br /><br />
+        For example, when we tried to modify an integer using an operation like
+        n += 1, the result was that a new integer was created and assigned to
+        the variable, rather than modifying the original integer. The ID of the
+        original integer remained unchanged, which is characteristic of
+        immutable objects. Similarly, when we worked with strings and tuples, we
+        observed that operations like concatenation or modification resulted in
+        the creation of new objects, rather than altering the original object.
+        <br /><br />
+        For instance, when you perform an operation like a = a + [4] on a list,
+        Python creates a new list because lists are mutable, but with immutable
+        objects like strings or tuples, the operation creates an entirely new
+        object rather than changing the original one.
+        <br /><br />
+        <strong>Here's an example with tuples:</strong>
+        <br /><br />
+        <span id="example">
+          a = (1, 2, 3) <br />
+          b = a <br />
+          a += (4,) <br /><br />
+          print(a) <br />
+          # Output: (1, 2, 3, 4) <br /><br />
+          print(b) <br />
+          # Output: (1, 2, 3)
+          <br />
+        </span>
+        <br /><br />
+        In this example, even though a was assigned the value of b, when we used
+        += to add an element to the tuple, a new tuple was created, leaving the
+        original tuple referenced by b unchanged.
+        <br /><br />
+        One of the most interesting aspects of immutable objects is the
+        optimization of memory. Python often stores certain immutable objects,
+        such as small integers (ranging from -5 to 256) and empty tuples, in a
+        shared memory pool to optimize memory usage. This means that multiple
+        references to the same value will point to the same memory address. This
+        behavior is particularly useful for reducing memory consumption when
+        dealing with objects that are frequently reused.
+      </p>
+    </article>
+    <hr />
+    <article>
+      <header>
+        <h2>
+          Why Does it Matter and How Differently Does Python Treat Mutable and
+          Immutable Objects
+        </h2>
+      </header>
+      <p>
+        The distinction between mutable and immutable objects in Python matters
+        significantly because it impacts how Python handles memory management,
+        object references, and how operations on these objects affect their
+        state. Python optimizes the use of immutable objects by storing some of
+        them, such as small integers (from -5 to 256) and empty tuples, in a
+        shared memory pool. This means that when multiple variables reference
+        the same value, they point to the same memory address. This is done to
+        save memory and improve performance, as Python can reuse these objects
+        instead of creating new ones each time they are referenced. This
+        interning behavior ensures that immutable objects are efficient in terms
+        of memory usage and helps Python work faster in cases where the same
+        values are frequently used.
+        <br /><br />
+        In contrast, mutable objects, such as lists, dictionaries, and sets, are
+        stored at different memory locations each time they are modified. This
+        means that any changes made to a mutable object directly modify its
+        content in place, without creating a new object. While this allows for
+        efficient handling of large datasets or structures that need frequent
+        updates, it also means that Python doesn't optimize memory for mutable
+        objects in the same way it does for immutable ones. Therefore, when you
+        pass mutable objects to functions or modify them, it can have side
+        effects on the original objects, which is not the case with immutable
+        objects.
+        <br /><br />
+        Understanding these differences is important because it can affect the
+        behavior of your program. When working with immutable objects, you are
+        guaranteed that their state won't change unexpectedly. With mutable
+        objects, however, you need to be cautious of how and where the object is
+        modified, as changes can propagate through your program, sometimes
+        leading to unintended results.
+      </p>
+    </article>
+    <hr />
+    <article>
+      <header>
+        <h2>
+          How Arguments Are Passed to Functions and What Does That Imply for
+          Mutable and Immutable Objects
+        </h2>
+      </header>
+      <p>
+        In Python, arguments are passed to functions by assignment, meaning that
+        the reference to the object (rather than a copy of the object itself) is
+        passed into the function. This means that if you pass a mutable object
+        (like a list or a dictionary) to a function, the function can modify the
+        object in place, and those changes will affect the original object
+        outside the function. This behavior is known as pass-by-object-reference
+        or pass-by-assignment. The object itself isn't copied, but a reference
+        to the same memory location is passed.
+        <br /><br />
+        <strong
+          >For example, consider the following code with a mutable object (a
+          list):</strong
+        >
+        <br /><br />
+        <span id="example">
+          def modify_list(list): <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list.append(4) <br /><br />
+          my_list = [1, 2, 3] <br />
+          modify_list(my_list) <br /><br />
+          print(my_list) <br />
+          # Output: [1, 2, 3, 4]
+        </span>
+        <br /><br />
+        In this case, the list my_list is passed to the function modify_list,
+        and the function modifies the list in place by appending a new element.
+        Since lists are mutable, the changes affect the original my_list, and
+        after the function call, the list is updated.
+        <br /><br />
+        On the other hand, when you pass immutable objects like integers,
+        strings, or tuples to a function, the function cannot change the value
+        of the original object. Instead, any operation that modifies the object
+        inside the function results in the creation of a new object. Since these
+        objects are immutable, the original object remains unchanged.
+        <br /><br />
+        <strong
+          >For example, consider this code with an immutable object (an
+          integer):</strong
+        ><br /><br />
+        <span id="example">
+          def modify_integer(n): <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n += 1 <br /><br />
+          a = 5 <br />
+          modify_integer(a) <br /><br />
+          print(a) <br />
+          # Output: 5
+        </span>
+        <br /><br />
+        In this case, the integer a is passed to the function modify_integer,
+        but since integers are immutable, the operation n += 1 creates a new
+        integer. The value of a outside the function remains the same because
+        integers cannot be modified in place.
+        <br /><br />
+        This distinction is important because when working with mutable objects,
+        changes inside the function can lead to unexpected side effects on the
+        original object. With immutable objects, however, the original object
+        remains safe from modification, and any changes result in a new object
+        being created. This is crucial to understand when designing functions,
+        especially when passing complex objects like lists or dictionaries as
+        arguments, as you need to be mindful of whether you want the original
+        object to be modified or not.
+      </p>
+    </article>
+  </body>
+</html>
